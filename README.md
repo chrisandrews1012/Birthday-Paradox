@@ -1,55 +1,61 @@
-# Birthday Paradox Visualization
+# Birthday Paradox
 
-An interactive web application that visualizes and explores the **Birthday Paradox** using graph theory and statistical analysis. The Birthday Paradox demonstrates that in a group of just 23 people, there's over a 50% chance that two people share the same birthday - a counterintuitive result that surprises most people.
+An interactive app that visualizes the Birthday Paradox through graph theory and probability analysis.
+
+## Overview
+
+The Birthday Paradox shows that in a group of just 23 people, there's over a 50% chance two people share a birthday - a result that is very counterintuitive. This project models that problem as a graph and visualizes how the probability shifts as group size grows.
 
 ## Technical Highlights
 
-*   **Interactive UI**: Built with **Streamlit** to create a responsive data application.
-*   **Graph Theory**: Leverages **NetworkX** to dynamically build graphs representing social networks of birthday connections.
-*   **Data Visualization**: Uses **Plotly** to render interactive network graphs and probability curves.
-*   **Containerization**: Easily deployable using **Docker** and Docker Compose.
+- **NetworkX (Graph Theory)**: Constructs a graph where people are nodes and shared birthdays are edges, making the abstract probability problem concrete and traversable.
+- **Plotly**: Renders interactive network graphs and probability curves, allowing real-time exploration of the data.
+- **Streamlit**: Powers the frontend as a single-page data application.
+- **Docker and Docker Compose**: Fully containerized for a consistent, one-command deployment.
 
 ## Features
 
-*   **Interactive Graph Visualization**: See people as nodes and shared birthdays as edges in real-time.
-*   **Probability Curve**: Visual representation of how probability increases with group size.
-*   **Statistical Analysis**: Live calculations showing theoretical vs. actual birthday matches.
-*   **Adjustable Population**: Explore groups from 2 to 366 people via an interactive slider.
+- **Interactive Graph**: Watch nodes and edges form in real-time as shared birthdays are detected in the group.
+- **Probability Curve**: See how the likelihood of a shared birthday climbs as group size increases.
+- **Live Statistics**: Side-by-side comparison of theoretical probability vs. actual matches in the simulation.
+- **Adjustable Group Size**: Explore any group from 2 to 366 people using an interactive slider.
+
+## Project Structure
+
+```
+birthday-paradox/
+├── app.py                  # Streamlit entry point
+├── docker-compose.yml      # Service orchestration
+├── Dockerfile              # Container definition
+├── requirements.txt        # Dependencies
+└── processors/
+    ├── __init__.py
+    └── processors.py       # Birthday generation and graph logic
+```
 
 ## Getting Started
 
 ### Prerequisites
 
-*   Docker and Docker Compose (Recommended)
-*   Python 3.11+ (if running locally without Docker)
+- [Docker](https://www.docker.com/) and Docker Compose (recommended)
+- Python 3.11+ (if running locally)
 
-### Installation (Docker - Recommended)
+### Docker (Recommended)
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/your-username/birthday-paradox.git
-    cd Birthday-Paradox
-    ```
-2.  Build and start the application using Docker Compose:
-    ```bash
-    docker compose up --build
-    ```
-3.  The application will open in your default browser at `http://localhost:8501`.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/birthday-paradox.git
+   cd birthday-paradox
+   ```
 
-### Local Development (Without Docker)
+2. Build and start the app:
+   ```bash
+   docker compose up --build
+   ```
 
-1.  Ensure you have Python 3.11+ installed.
-2.  Create a virtual environment and install dependencies:
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-    pip install -r requirements.txt
-    ```
-3.  Start the Streamlit development server:
-    ```bash
-    streamlit run app.py
-    ```
+3. Visit `http://localhost:8501` in your browser.
+
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
