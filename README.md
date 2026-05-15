@@ -5,7 +5,7 @@
 ![Python Version](https://img.shields.io/badge/python-3.11-blue)
 ![Stack](https://img.shields.io/badge/stack-Streamlit%20%7C%20NetworkX%20%7C%20Plotly-blue)
 
-Built to make the Birthday Paradox tangible — not just a formula, but something you can see.
+Built to make the Birthday Paradox tangible. Not just a formula, but something you can see.
 
 ## Problem Statement
 
@@ -13,7 +13,7 @@ The Birthday Paradox states that in a group of just 23 people, there is a greate
 
 ## Approach
 
-Each person in the simulated group is modeled as a node in an undirected graph, with edges drawn between any two people who share a birthday. That linkage structure makes the paradox visible — you can watch the network of shared birthdays form and densify as group size increases, rather than just reading a percentage.
+Each person in the simulated group is modeled as a node in an undirected graph, with edges drawn between any two people who share a birthday. That linkage structure makes the paradox visible. You can watch the network of shared birthdays form and densify as group size increases, rather than just reading a percentage.
 
 Two visualizations run in parallel:
 
