@@ -1,5 +1,4 @@
 import networkx as nx
-from datetime import datetime, timedelta
 from collections import Counter, defaultdict
 from itertools import combinations
 import random
@@ -18,7 +17,7 @@ def random_birthday() -> str:
     month = random.randint(1, 12)
     days_in_month = calendar.monthrange(2025, month)[1]
     day = random.randint(1, days_in_month)
-    
+
     return f"{month:02d}_{day:02d}"
 
 
@@ -35,8 +34,8 @@ def generate_population(num: int) -> list[str]:
     population_list = []
     for _ in range(num):
         population_list.append(random_birthday())
-        
-    return population_list    
+
+    return population_list
 
 
 def create_graph(population: list[str]) -> nx.Graph:
@@ -52,16 +51,16 @@ def create_graph(population: list[str]) -> nx.Graph:
     """
     G = nx.Graph()
     bday_groups = defaultdict(list)
-    
+
     for person, bday in enumerate(population):
         G.add_node(person, bday=bday) # Add nodes with attributes
         bday_groups[bday].append(person) # Add person to the defaultdict
-        
+
     # Add edges between nodes sharing the same bday
     for group in bday_groups.values():
-        G.add_edges_from(combinations(group, 2))  
-        
-    return G  
+        G.add_edges_from(combinations(group, 2))
+
+    return G
 
 
 def birthday_paradox_prob(num: int) -> Decimal:
@@ -76,12 +75,12 @@ def birthday_paradox_prob(num: int) -> Decimal:
       :rtype: Decimal
     """
     getcontext().prec = 15
-    
+
     if num > 365:
           return Decimal('100')  # Pigeonhole Principle
     if num < 2:
           return Decimal('0')  # Need at least 2 people to share
-    
+
     prob_unique = Decimal('1')
     days = Decimal('365')
 
@@ -89,9 +88,9 @@ def birthday_paradox_prob(num: int) -> Decimal:
         prob_unique *= (days - Decimal(i)) / days
 
     result = Decimal('100') * (Decimal('1') - prob_unique)
-    
+
     if result > Decimal('99.999999999999999'):
-        return Decimal('99.999999999999999') 
+        return Decimal('99.999999999999999')
     else:
         return result
 
@@ -108,11 +107,11 @@ def calculate_prob(population: list[str]) -> tuple[int, int, float]:
     :rtype: tuple[int, int, float]
     """
     birthday_counts = Counter(population)
-    
-    total_bdays = len(population)  
+
+    total_bdays = len(population)
     shared_bdays = sum(count for count in birthday_counts.values() if count > 1)
     percent_bdays = round(shared_bdays / total_bdays, 5)
-        
+
     return total_bdays, shared_bdays, percent_bdays
 
 
@@ -132,7 +131,5 @@ def birthday_paradox_plot(num):
     prob_unique = 1.0
     for i in range(num):
         prob_unique *= (365 - i) / 365
-    
-    return 1 - prob_unique 
-    
-    
+
+    return 1 - prob_unique

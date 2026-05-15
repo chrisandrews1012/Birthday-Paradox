@@ -2,11 +2,11 @@ FROM python:3.11-slim-bullseye
 
 WORKDIR /app
 
-COPY requirements.txt .
-COPY processors ./processors/
+COPY pyproject.toml .
+COPY src ./src/
 COPY app.py .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir .
 
 EXPOSE 8501
 

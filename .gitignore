@@ -1,3 +1,10 @@
+# Data files
+*.csv
+*.parquet
+data/**/*.parquet
+data/**/*.csv
+!data/**/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

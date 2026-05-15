@@ -2,7 +2,7 @@ import numpy as np
 import streamlit as st
 import networkx as nx
 import plotly.graph_objs as go
-from processors import processors as pcr
+from birthday_paradox import processors as pcr
 
 # Page Configurations
 st.set_page_config(layout="wide")
